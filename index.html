@@ -6,6 +6,22 @@
   <script id="challenge">
     // 👉 CHALLENGE 1
     function profileActivation(profile, reason) {
+        //check value active property of incoming profile.
+        //if true, make it flase -- if false make it true -- in other words invert it
+        //however, theres another step
+        //if true, set to false but also "reason" to the reason property of the object(profile)--note if no property exists it will create it same way you access it
+        //if false set to true and delete the "reason" property altogether
+        //if the parameters don't include reason, then return string "confirm status manually"
+        if(reason === undefined && !profile.reason) return "confirm status manually"
+        else if(profile.active === true) {
+          profile.active = false;
+          profile.reason = reason;
+          return profile;
+        } else if (profile.active === false) {
+          profile.active = true;
+          delete profile.reason;
+          return profile;
+        }
 
     }
 
