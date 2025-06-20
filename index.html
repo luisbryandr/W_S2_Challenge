@@ -27,7 +27,16 @@
 
     // 👉 CHALLENGE 2
     function mineSweeper(grid, x, y) {
-
+      //when y = 1 we are accessing grid[0]
+      //when y =2 its grid[1],
+    // when y = 3 is grid[2],
+    //when x = 1 its grid[y-1][x]
+    //so really we just look for grid[y-1][x] and see if the string is red or blue and return the appropiate response
+      // but first the edge cases
+      if (x < 1|| x > 3 || y< 1 || y > 3) return "invalid coordinates"
+      else if(grid[y-1][x-1] === "🟥") return "🟥 💀"
+      else if(grid[y-1][x-1] === "🟦") return "🟦 🥳"
+      else return "empty cell"
     }
 
     // 👉 CHALLENGE 3
