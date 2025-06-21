@@ -5,7 +5,27 @@ Develop the `scrub` function that takes a string of text and an array of forbidd
 
 ### Function
 ```javascript
-function scrub(text, forbidden)
+function scrub(text, forbidden) {
+    // Return original text if empty or no forbidden words
+    if (!text || forbidden.length === 0) {
+        return text;
+    }
+    
+    // Split text into words
+    let words = text.split(' ');
+    
+    // Process each word
+    for (let i = 0; i < words.length; i++) {
+        // Check if current word is in forbidden array
+        if (forbidden.indexOf(words[i]) !== -1) {
+            // Replace with x's of same length
+            words[i] = 'x'.repeat(words[i].length);
+        }
+    }
+    
+    // Join words back together
+    return words.join(' ');
+}
 ```
 
 #### Parameters

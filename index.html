@@ -41,12 +41,42 @@
 
     // 👉 CHALLENGE 3
     function booleanize(obj) {
-
+    // Check if any property name exceeds 9 characters
+    for (let key in obj) {
+        if (key.length > 9) {
+            return "shorten all prop names to 9 chars or less";
+        }
     }
+    
+    // Transform values according to requirements
+    for (let key in obj) {
+        if (obj[key] === null) {
+            delete obj[key];
+        } else if (obj[key] === 0) {
+            obj[key] = false;
+        } else if (obj[key] === 1) {
+            obj[key] = true;
+        }
+    }
+    
+    return obj;
+}
+    
 
     // 👉 CHALLENGE 4
     function scrub(text, forbidden) {
-
+       if (!text || forbidden.length === 0) {
+        return text;
+    }
+    
+    // Convert to Set for O(1) lookup and make case-insensitive
+    const forbiddenSet = new Set(forbidden.map(word => word.toLowerCase()));
+    
+    return text.split(' ').map(word => {
+        // Remove punctuation for checking but preserve original word structure
+        const cleanWord = word.replace(/[^\w]/g, '').toLowerCase();
+        return forbiddenSet.has(cleanWord) ? 'x'.repeat(word.length) : word;
+    }).join(' ');
     }
 
     // 👉 CHALLENGE 5 (bonus, NOT graded)
