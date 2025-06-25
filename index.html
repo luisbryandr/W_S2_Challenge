@@ -81,16 +81,35 @@
 
     // 👉 CHALLENGE 5 (bonus, NOT graded)
     function normalizePhoneNumber(num) {
-      let phoneNumber = num.split('')
-      console.log(phoneNumber)// see if its an array.
-      //long way could be to concatenate each number for the proposed output
-      //something like `(pN[0]+ pn[1])` etc 
-      //but theres a much better way to do it using other methods
-  
+      // Check if input is valid (10 digits)
+      if (!num || num.length !== 10) {
+        return num; // Return original if invalid
+      }
+      
+      // Format: (XXX) XXX-XXXX
+      // Extract parts: area code (first 3), exchange (next 3), number (last 4)
+      const areaCode = num.slice(0, 3);
+      const exchange = num.slice(3, 6);
+      const number = num.slice(6, 10);
+      
+      return `(${areaCode}) ${exchange}-${number}`;
+    }
 
     // 👉 CHALLENGE 6 (bonus, NOT graded)
     function diceRolls() {
-
+      let counter = 0;
+      let throws = 0;
+      do {
+        throws++
+        let diceRoll = Math.floor(Math.random() * 6) + 1;
+        if(diceRoll === 6) {
+          counter++
+        } else {
+          counter = 0; // Reset counter if we don't roll a 6
+        }
+      } while (counter < 3)
+      console.log(throws)
+      return throws
     }
 
     // 🧪 DO NOT make any changes below this line ===================

@@ -12,9 +12,9 @@ function diceRolls()
 - The function does not take any arguments.
 
 ## Requirements
-1. Simulate rolling a six-sided die.
-2. Continue rolling until three consecutive rolls result in a six.
-3. Return the total number of rolls it took to achieve three consecutive sixes.
+1. Simulate rolling a six-sided die. //use Math.floor(Math.Random x 6)
+2. Continue rolling until three consecutive rolls result in a six. //while(true) loop, while "counter" < 3 keep rolling, break once done
+3. Return the total number of rolls it took to achieve three consecutive sixes. //each roll increase "throws" counter return this when the while loop is done
 
 ### Implementation Hints
 - Utilize `Math.random` to simulate each die roll, ensuring it returns a number from 1 to 6. You can read about how `Math.random` works [here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random).
